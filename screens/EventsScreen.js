@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
+import { Text, View, Button, Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 function EventsHomeScreen({ navigation }) {
@@ -14,10 +14,22 @@ function EventsHomeScreen({ navigation }) {
   );
 }
 
-function EventsSecondScreen() {
+function EventsSecondScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Events second screen!</Text>
+      <Button
+        title="Third screen"
+        onPress={() => navigation.navigate("EventsThird")}
+      ></Button>
+    </View>
+  );
+}
+
+function EventsThirdScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Events Third screen!</Text>
     </View>
   );
 }
@@ -29,6 +41,7 @@ export default function EventsScreen() {
     <Stack.Navigator>
       <Stack.Screen name="EventsHome" component={EventsHomeScreen} />
       <Stack.Screen name="EventsSecond" component={EventsSecondScreen} />
+      <Stack.Screen name="EventsThird" component={EventsThirdScreen} />
     </Stack.Navigator>
   );
 }
